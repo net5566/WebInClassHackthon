@@ -2,20 +2,20 @@ import { Router } from 'express';
 
 const router = new Router();
 
-const users = 
+const links = 
 { 
-  users: [
-    { avatar: 'http://xxx.com', name: 'John', age: 23 },
-    { avatar: 'http://xxx.com', name: 'Amy', age: 18 },
+  lnks: [
+    { site: 'https://www.goethe.de/ins/tw/cn/index.html', name: '歌德學院', comment: '自己本身還算蠻常上去歌德的免費學習論壇上面學習的，上面還會有外國人主動搭訕來聊天練習德文。有一次不小心用了英文還被對方制止了。' },
+    { site: 'http://www.bbc.co.uk/languages/german/', name: 'BBC德語學習網', comment: '以前上德文課的時候，老師上課偶爾會播放上面的影片來輔助教學。' },
   ]
 };
 
 // Write your restful api here:
-router.get('/users', (req, res) => {
-	res.json(users);
+router.get('/links', (req, res) => {
+	res.json(links);
 });
 
-router.use('/users/:id',(req, res, next) => {
+router.use('/links/:id',(req, res, next) => {
 
 	let id = Number(req.params.id);
 
@@ -24,8 +24,8 @@ router.use('/users/:id',(req, res, next) => {
 	}
 
 	if (id > 0 && id < 3){
-		console.log(users.users[id-1]);
-		res.json(users.users[id-1]);
+		console.log(links.lnks[id-1]);
+		res.json(links.lnks[id-1]);
 	}
 	else {
 		next();

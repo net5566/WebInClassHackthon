@@ -13,15 +13,16 @@ class UsersPage extends Component {
 
   componentDidMount() {
     // fetch `/api/users` to get users and then set state...
-    fetch('/api/users')
+    fetch('/api/links')
       .then(res=>res.json())
       .then ( json => {
 
         let tempList= [];
-        for (let i=0, n= json.users.length; i < n ; i++ ) {
-          const tempStr = `#/users/${i + 1}`;
-          tempList.push(<li key={i}><a href={tempStr}>User {i+1}</a></li>)
+        for (let i=0, n= json.lnks.length; i < n ; i++ ) {
+          const tempStr = `#/links/${i + 1}`;
+          tempList.push(<li key={i}><a href={tempStr}>link {i+1}</a></li>)
         }
+        console.log(tempList);
         this.setState ({ userslist: tempList});
     });
 
@@ -29,6 +30,7 @@ class UsersPage extends Component {
   }
 
   render() {
+
 
       const thelist = this.state.userslist;
       if(thelist === undefined) {
@@ -39,8 +41,7 @@ class UsersPage extends Component {
         <div>{thelist}</div>
       </div> ;
       }
-    
-  }
+      }
 }
 
 export default UsersPage;

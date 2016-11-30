@@ -7,6 +7,7 @@ class SingleUserPage extends Component {
 
     this.state = {
       userProfile : [],
+      thesite : '',
     };
   }
 
@@ -17,26 +18,31 @@ class SingleUserPage extends Component {
 
   componentDidMount() {
     // fetch `/api/users/${id}` to get user and then set state...
-    fetch (`/api/users/${this.props.id}`)
+    fetch (`/api/links/${this.props.id}`)
     	.then(res=>res.json())
     	.then(json =>
     	{
-    		let tempProfile = [];
-    		const tempAvatar = `avatar: ${json.avatar}`;
+    		let tempData = [];
+    		const tempSite = `${json.site}`;
     	//	console.log(tempAvatar);
-    		const tempName = `name: ${json.name}`;
+    		const tempName = `${json.name}`;
     	//	console.log(json.name);
-    		const tempAge = `age: ${json.age}`;
-    		tempProfile.push(<li key={0}>{tempAvatar}</li>);
-    		tempProfile.push(<li key={1}>{tempName}</li>);
-    		tempProfile.push(<li key={2}>{tempAge}</li>);
-    		this.setState({ userProfile:tempProfile });
+    		const tempAge = `${json.comment}`;
+    //		tempData.push(<li key={0}>{tempSite}</li>);
+    		tempData.push(<li key={1}>{tempName}</li>);
+    		tempData.push(<li key={2}>{tempAge}</li>);
+    		this.setState({ userProfile:tempData });
+        this.setState({ thesite:tempSite} );
     	});
   }
 
   render() {
-    return <div>User {this.props.id}
-    <h3>{this.state.userProfile}</h3></div>;
+    return <div> Link {this.props.id}
+    <h3><a href={this.state.thesite}>{this.state.userProfile[0]}</a></h3>
+    <div> {this.state.userProfile[1]} </div>
+    <div> 網址: {this.state.thesite} </div>
+
+    </div>;
   }
 }
 
