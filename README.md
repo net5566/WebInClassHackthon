@@ -1,4 +1,4 @@
-# hw7-starter
+# WebInClassHackthon
 
 
 ## Install
