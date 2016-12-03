@@ -10,7 +10,38 @@ const links =
   ]
 };
 
+const notiz = 
+{ 
+  notiz: [
+    { date: '161201' },
+    { date: '162222' },
+  ]
+};
+
 // Write your restful api here:
+
+router.get('/notiz', (req, res) => {
+	res.json(notiz);
+});
+
+router.use('/notiz/:id',(req, res, next) => {
+
+	let id = Number(req.params.id);
+
+	if (isNaN(id)) {
+		next();
+	}
+
+	if (id > 0 && id < 2){
+		console.log(notiz.notiz[id-1]);
+		res.json(notiz.notiz[id-1]);
+	}
+	else {
+		next();
+	}
+});
+
+
 router.get('/links', (req, res) => {
 	res.json(links);
 });
@@ -31,6 +62,8 @@ router.use('/links/:id',(req, res, next) => {
 		next();
 	}
 });
+
+
 
 
 export default router;

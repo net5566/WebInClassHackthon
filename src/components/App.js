@@ -5,7 +5,10 @@ import UsersPage from './UsersPage';
 import SingleUserPage from './SingleUserPage';
 import AboutMe from './AboutMe';
 import Deu from './Deu';
-import Trans from './Trans'
+import Trans from './Trans';
+import Deu161201 from './Deu161201';
+import Notiz from './Notiz';
+
 
 
 class App extends Component {
@@ -35,6 +38,10 @@ class App extends Component {
       return <Trans />;
     }
 
+    if (this.state.route === '/deu161201') {
+      return <Deu161201 />;
+    }
+
     if (this.state.route === '/links') {
       return <UsersPage />;
     }
@@ -42,6 +49,10 @@ class App extends Component {
     if (this.state.route.startsWith('/links/')) {
       const id = this.state.route.split('/links/')[1];
       return <SingleUserPage id={id} />;
+    }
+
+    if (this.state.route === '/notiz') {
+      return <Notiz />;
     }
 
     return <HomePage />;
@@ -85,6 +96,7 @@ class App extends Component {
                 <li><a href="#/deu">Deutschland 德國</a></li>
                 <li><a href="#/links">Deutsch Lernen 德文學習資源</a></li>
                 <li><a href="#/trans">Deutsch Nummer 德文數字</a></li>
+                <li><a href="#/notiz">Deutsch Notiz 德文筆記</a></li>
               </ol>
             </div>
             <div className="sidebar-module">

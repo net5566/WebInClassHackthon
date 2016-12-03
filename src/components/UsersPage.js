@@ -22,7 +22,7 @@ class UsersPage extends Component {
           const tempStr = `#/links/${i + 1}`;
           tempList.push(<li key={i}><a href={tempStr}>link {i+1}</a></li>)
         }
-        console.log(tempList);
+   //     console.log(tempList);
         this.setState ({ userslist: tempList});
     });
 
@@ -37,7 +37,7 @@ class UsersPage extends Component {
         return <h1> WTF </h1> ;
       }
       else {
-        return <div>Users
+        return <div>Links
         <div>{thelist}</div>
       </div> ;
       }
